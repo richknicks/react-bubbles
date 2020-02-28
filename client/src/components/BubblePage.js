@@ -11,7 +11,7 @@ const BubblePage = () => {
   // set that data to the colorList state property
   useEffect(() => {
     
-    setTimeout(() => {
+    
       axiosWithAuth()
         .get("colors")
         .then(response => {
@@ -25,7 +25,7 @@ const BubblePage = () => {
           );
           
         });
-    }, 2000);
+    
   }, []);
 
   return (
