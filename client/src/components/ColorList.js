@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth.js";
 
+
 const initialColor = {
   color: "",
   code: { hex: "" }
@@ -45,7 +46,17 @@ const ColorList = ({ colors, updateColors }) => {
     .catch(error => {
       console.log(`error ${error}`);
     });
+
+    
   };
+  const addColor = () => {
+    axiosWithAuth()
+    .post('colors',colorToEdit)
+    .then(response=>{
+      setColorToEdit(response.data)
+    })
+    .catch(error=>console.log('Cannot add color',error))
+  }
 
   return (
     <div className="colors-wrap">
@@ -102,6 +113,34 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      <form onSubmit={addColor}>
+          <legend>add color</legend>
+          <label>
+            color name:
+            <input
+              onChange={e =>
+                setColorToEdit({ ...colorToEdit, color: e.target.value })
+              }
+              value={colorToEdit.color}
+            />
+          </label>
+          <label>
+            hex code:
+            <input
+              onChange={e =>
+                setColorToEdit({
+                  ...colorToEdit,
+                  code: { hex: e.target.value }
+                })
+              }
+              value={colorToEdit.code.hex}
+            />
+          </label>
+          <div className="button-row">
+            <button type="submit">save</button>
+            
+          </div>
+        </form>
     </div>
   );
 };

@@ -40,6 +40,11 @@ A web server processes incoming network requests over HTTP and several other rel
 
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
+Create: .post, 
+Read: .get, 
+update: .put 
+and delete: .delete. 
+
 
 ## Project Set Up
 
