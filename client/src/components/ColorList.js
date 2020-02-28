@@ -26,8 +26,8 @@ const ColorList = ({ colors, updateColors }) => {
       .then(response => {
         console.log(response.data);
         updateColors(colors);
-        update(true);
-        setUpdating(false);
+        // update(true);
+        setEditing(false);
       })
       .catch(error => {
         console.log(`error with PUT ${error.response}`);
@@ -41,7 +41,7 @@ const ColorList = ({ colors, updateColors }) => {
     .then(response => {
       console.log("response", response.data);
       updateColors(colors.filter(item => item.id !== color.id));
-      updating(false);
+      editing(false);
     })
     .catch(error => {
       console.log(`error ${error}`);
