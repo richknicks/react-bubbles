@@ -21,9 +21,9 @@ const Login = (props) => {
       .post("login", login)
       .then(response => {
         console.log("response", response);
-        localStorage.setItem("token", response.data.payload);
+        window.localStorage.setItem("token", response.data.payload);
         
-        props.history.push("/");
+        props.history.push("/protected");
       })
       .catch(error => {
         console.log(`Login error:  ${error}`);
